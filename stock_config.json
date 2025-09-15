@@ -1,0 +1,20 @@
+{
+"stock-feed": 
+	{
+	 "RELIANCE":"IT Services & Consulting"
+	 "mf-server":"10.123.79.234"
+	}
+"sector-level":
+	{
+	"ITCS":
+		{
+		"INFOSYS":"IT Services & Consulting",
+		"WIPRO":"IT Services & Consulting"
+		"KPIT":"IT Services & Consulting"
+		}
+	"Online":
+		{
+		"PAYTM":"Online Services"
+		}
+	}
+}

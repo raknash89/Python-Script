@@ -1,0 +1,56 @@
+//SORT1 JOB (ACCOUNT),'PD TO ZD',                            
+//         CLASS=A,                                          
+//         MSGCLASS=X,                                       
+//         REGION=4096K,NOTIFY=&SYSUID                       
+//*JOBPARM SYSAFF=AMP5                                       
+//STEP1  EXEC PGM=IEFBR14                                    
+//DD1    DD DSN=G176281.TEST.DATA2.EBCID,                    
+//       DISP=(MOD,DELETE,DELETE),                           
+//       UNIT=SYSDA,SPACE=(TRK,1)                            
+//DD2    DD DSN=G176281.TEST.DATA2.ASCII,                    
+//       DISP=(MOD,DELETE,DELETE),                           
+//       UNIT=SYSDA,SPACE=(TRK,1)                            
+//SYSPRINT DD SYSOUT=*                                       
+//*                                                          
+//STEP2  EXEC PGM=SORT                                       
+//SYSPRINT DD  SYSOUT=*                                      
+//SYSOUT   DD  SYSOUT=*                                      
+//*SORTIN   DD DSN=G176281.SPUNCH.D220622.TBL1.DAT,DISP=SHR  
+//SORTOUT  DD DSN=G176281.TEST.DATA2.EBCID,                        
+//          DISP=(NEW,CATLG,DELETE),                               
+//          SPACE=(CYL,(1,5),RLSE),                                
+//          DCB=(DSORG=PS,RECFM=FB,LRECL=80)                       
+//*         DCB=*.SORTIN                                           
+//SORTIN DD *                                                      
+00001 RAN 109.75                                                   
+00002 GEO 100.75                                                   
+00004 ZOO 45.00-                                                   
+00001 BAN 109.75                                                   
+00002 GEO 160.75                                                   
+00003 ZOO 45.00-                                                   
+//SYSIN    DD *                                                    
+    SORT FIELDS=COPY                                               
+    OUTREC FIELDS=(1,5,ZD,TO=FS,LENGTH=5,X,                        
+                   7,3,X,                                          
+                   11,6,SFF,TO=PD,LENGTH=3)                        
+/*                                                                 
+//*                                                              
+//STEP3  EXEC PGM=SORT                                           
+//SYSPRINT DD  SYSOUT=*                                          
+//SYSOUT   DD  SYSOUT=*                                          
+//*SORTIN   DD DSN=G176281.SPUNCH.D220622.TBL1.DAT,DISP=SHR      
+//*SORTOUT  DD DSN=G176281.D220622.SORT.OUT,                     
+//*          DISP=(NEW,CATLG,DELETE),                            
+//*          SPACE=(CYL,(1,5),RLSE),                             
+//*          DCB=*.SORTIN                                        
+//SORTIN DD DSN=G176281.TEST.DATA2.EBCID,DISP=SHR                
+//SORTOUT DD DSN=G176281.TEST.DATA2.ASCII,                       
+//          DISP=(NEW,CATLG,DELETE),                             
+//          SPACE=(CYL,(1,5),RLSE),                              
+//          DCB=(DSORG=PS,RECFM=FB,LRECL=80)                     
+//SYSIN    DD *                                                  
+    SORT FIELDS=COPY                                             
+    OUTREC FIELDS=(1,5,FS,TO=ZD,LENGTH=5,X,                      
+                   7,3,X,                                    
+                   11,3,PD,TO=ZD,LENGTH=6)                   
+/*                                                           

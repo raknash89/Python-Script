@@ -1,0 +1,12 @@
+MFUSRID<=>G176281
+JCLLIB<=>D:\gowrishankar.p\JCL
+MFFTPIN<=>G176281.FTP.JCLLIB
+GETLIB<=>D:\gowrishankar.p\GET
+VER<=>1115
+OPT<=>FL
+MAKERUN<=>YES
+SERVER<=>10.123.79.234
+USER<=>G176281
+PASS<=>newpass
+CERTI<=>0f:e3:7c:9b:c8:45:54:c5:cc:63:82:21:ae:25:32:ad:73:40:20:54
+LOG<=>D:\gowrishankar.p\Log

@@ -1,0 +1,6 @@
+open ftpes://G176281:newpass@10.123.79.234/ -certificate="0f:e3:7c:9b:c8:45:54:c5:cc:63:82:21:ae:25:32:ad:73:40:20:54"
+lcd D:\gowrishankar.p\JCL
+cd 'D:\gowrishankar.p\JCL.'
+get -transfer=ascii G176281.FTP.JCLLIB.NEW
+ls
+exit

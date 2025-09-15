@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr  7 11:33:49 2022
+
+@author: gowrishankar.p
+"""
+
+import sys
+import re,csv
+
+readfile = False
+try:
+    read = open('D:\gowrishankar.p\Python Script\input.csv','r')
+    readfile = True
+except ValueError as e:
+    print("Open unsupported file read error: %s") %e
+    sys.exit()
+    
+if readfile == True: 
+    reader = csv.reader(read, delimiter=',')
+    headers_ = next(reader)
+    data_ = list(reader)
+    read.close()
+
+prevload = []
+load = []
+
+def output(load):
+    scriptPath = 'D:\gowrishankar.p\Python Script\output.txt'
+    with open(scriptPath, "a") as script:
+        # print(load)
+        string = ",".join(load)
+        print(string)
+        script.write(string)
+        script.write("\n")
+        script.close()
+        
+def call_chain(called,data):
+    global load
+    for j in data:
+        if j[0] not in prevload:
+            if called in j[0]:
+                # print(j[1])
+                called = j[1]
+                load.append(called)
+                call_chain(called,data)
+                prevload.append(j[0])
+    if len(load) > 0:
+        output(load)
+        load =[]
+
+for i in data_:
+    calling = i[0]
+    called = i[1]
+    if i[0] not in prevload:
+        # print("start ", i)
+        load.append(calling)
+        load.append(called)
+        call_chain(called,data_)
+    
+
+    

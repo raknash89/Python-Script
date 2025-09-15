@@ -1,0 +1,13 @@
+''' Read input from STDIN. Print your output to STDOUT '''
+    #Use input() to read input from STDIN and use print to write your output to STDOUT
+import math
+def main():
+
+ # Write code here 
+
+ AB = int(input()) 
+ BC = int(input())
+ print(90-int(round(math.degrees(math.atan(AB/BC)))), end = "")
+
+main()
+

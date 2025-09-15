@@ -1,0 +1,18 @@
+{
+"db_conn":
+	{
+	    "master_host": "localhost",
+	    "master_user": "postgres",
+	    "master_password":"postgres",
+	    "master_port": 5432,
+	    "master_db_name": "database86",
+	    "master_schema_name": "database86",
+	    "master_table": "program"
+	},
+"path_":
+	{
+	   "query_excel": "D:/gowrishankar.p/Python Script/Inp_script/Ilead_query.xlsx",
+	   "sheet_name": "List",
+	   "output": "D:/gowrishankar.p/Python Script/py_output"
+	}
+}
